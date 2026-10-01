@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Nuno — Engenho e Tecnologia</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.75);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1.25rem 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+
+        p.subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+            line-height: 1.2;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.85rem;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 85px;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .device-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            word-break: break-word;
+        }
+
+        .device-status {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        @media (min-width: 640px) {
+            body {
+                padding: 2rem 1.5rem;
+            }
+            header {
+                gap: 1.25rem;
+                margin-bottom: 2.5rem;
+                padding-bottom: 1.25rem;
+            }
+            .logo-container {
+                width: 56px;
+                height: 56px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            p.subtitle {
+                font-size: 0.95rem;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.15rem;
+            }
+            .card {
+                padding: 1.25rem;
+                min-height: 100px;
+            }
+            .device-name {
+                font-size: 1.05rem;
+            }
+            .device-status {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="Logótipo">
+            </div>
+            <div class="header-text">
+                <h1>Pedro Nuno</h1>
+                <p class="subtitle">Engenho e Tecnologia — Controlo Local</p>
+            </div>
+        </header>
+
+        <main class="grid">
+            <div class="card" onclick="triggerDevice('sala', event)">
+                <div class="device-name">sala</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('sala de estar', event)">
+                <div class="device-name">sala de estar</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('setup', event)">
+                <div class="device-name">setup</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('luz do quarto', event)">
+                <div class="device-name">luz do quarto</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('WC', event)">
+                <div class="device-name">WC</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('luz do laboratório', event)">
+                <div class="device-name">luz do laboratório</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('bancada', event)">
+                <div class="device-name">bancada</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('candeeiro da Xana', event)">
+                <div class="device-name">candeeiro da Xana</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('candeeiro do Pedro', event)">
+                <div class="device-name">candeeiro do Pedro</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('cozinha', event)">
+                <div class="device-name">cozinha</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('fonte de alimentação', event)">
+                <div class="device-name">fonte de alimentação</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('quarto', event)">
+                <div class="device-name">quarto</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('TV', event)">
+                <div class="device-name">TV</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('sensor de porta', event)">
+                <div class="device-name">sensor de porta</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function triggerDevice(deviceName, evt) {
+            console.log("Acionar dispositivo: " + deviceName);
+            const card = evt.currentTarget;
+            card.style.borderColor = 'var(--accent)';
+            setTimeout(() => {
+                card.style.borderColor = 'var(--card-border)';
+            }, 300);
+
+            // Tenta abrir o Deep Link direto da aplicação Smart Life no telemóvel
+            window.location.href = "smartlife://";
+        }
+    </script>
+
+</body>
+</html>
