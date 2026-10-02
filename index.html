@@ -185,6 +185,7 @@
         </header>
 
         <main class="grid">
+            <!-- 10 Dispositivos da Página 1 -->
             <div class="card" onclick="triggerDevice('sala', event)">
                 <div class="device-name">sala</div>
                 <div class="device-status">Toque para alternar</div>
@@ -194,7 +195,7 @@
                 <div class="device-status">Toque para alternar</div>
             </div>
             <div class="card" onclick="triggerDevice('setup', event)">
-                <div class="device-name">setup</div>
+                <div class="device-name">Setup</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
             <div class="card" onclick="triggerDevice('luz do quarto', event)">
@@ -213,24 +214,30 @@
                 <div class="device-name">bancada</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
-            <div class="card" onclick="triggerDevice('candeeiro da Xana', event)">
-                <div class="device-name">candeeiro da Xana</div>
+            <div class="card" onclick="triggerDevice('candeeiro da xana', event)">
+                <div class="device-name">candeeiro da xana</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
-            <div class="card" onclick="triggerDevice('candeeiro do Pedro', event)">
-                <div class="device-name">candeeiro do Pedro</div>
+            <div class="card" onclick="triggerDevice('candeeiro do pedro', event)">
+                <div class="device-name">Candeeiro do Pedro (Antigo)</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
             <div class="card" onclick="triggerDevice('cozinha', event)">
                 <div class="device-name">cozinha</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
+
+            <!-- 8 Dispositivos da Página 2 -->
             <div class="card" onclick="triggerDevice('fonte de alimentação', event)">
                 <div class="device-name">fonte de alimentação</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
-            <div class="card" onclick="triggerDevice('quarto', event)">
-                <div class="device-name">quarto</div>
+            <div class="card" onclick="triggerDevice('candeeiro do Pedro', event)">
+                <div class="device-name">candeeiro do Pedro</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('Quarto', event)">
+                <div class="device-name">Quarto</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
             <div class="card" onclick="triggerDevice('TV', event)">
@@ -241,22 +248,22 @@
                 <div class="device-name">sensor de porta</div>
                 <div class="device-status">Toque para alternar</div>
             </div>
+            <div class="card" onclick="triggerDevice('IR inteligente', event)">
+                <div class="device-name">IR inteligente</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('Campainha inteligente', event)">
+                <div class="device-name">Campainha inteligente</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
+            <div class="card" onclick="triggerDevice('TV box', event)">
+                <div class="device-name">TV box</div>
+                <div class="device-status">Toque para alternar</div>
+            </div>
         </main>
     </div>
 
-    <script>
-        function triggerDevice(deviceName, evt) {
-            console.log("Acionar dispositivo: " + deviceName);
-            const card = evt.currentTarget;
-            card.style.borderColor = 'var(--accent)';
-            setTimeout(() => {
-                card.style.borderColor = 'var(--card-border)';
-            }, 300);
-
-            // Tenta abrir o Deep Link direto da aplicação Smart Life no telemóvel
-            window.location.href = "smartlife://";
-        }
-    </script>
-
+    <!-- Script separado para gerir a lógica da API Tuya sem servidores -->
+    <script src="app.js"></script>
 </body>
 </html>
