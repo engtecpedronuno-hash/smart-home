@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Nuno — Engenho e Tecnologia</title>
+    <title>Pedro Nuno - Engenho e Tecnologia</title>
     <style>
         :root {
-            --bg-color: #0f172a;
+            --cor-de-fundo: #0F172A;
             --card-bg: rgba(30, 41, 59, 0.75);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
+            --borda-do-cartao: rgba(255, 255, 255, 0.1);
+            --texto-primario: #F8FAFC;
+            --texto-secundario: #94A3B8;
+            -- destaque: #0A569;
+            --accent-hover: #0a569;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            background-color: var(--cor-de-fundo);
+            color: var(--texto-primario);
             min-height: 100vh;
             padding: 1.25rem 0.75rem;
             display: flex;
@@ -33,343 +33,328 @@
             align-items: center;
         }
 
-        .container {
+        .recipiente {
             width: 100%;
             max-width: 1400px;
         }
 
-        header {
+        .cabecalho {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--card-border);
+            brechas: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--borda-do-cartao);
             padding-bottom: 1rem;
             width: 100%;
         }
 
-        .header-left {
+        .cabecalho-esquerda {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            brechas: 1rem;
         }
 
-        .logo-container {
+        .cotainer-de-logotipo {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 48px;
             height: 48px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            flex-shrink: 0;
-            overflow: hidden;
+            fundos: var(--card-bg);
+            fronteira: 1px solid var(--borda-do-cartao);
+            raio-da-borda: 10px;
+            backdrop-filter: blur(12px);
+            transição: ascendente 0.2s;
         }
 
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .cotainer-de-logotipo img {
+            largura: 100%;
+            altura: 100%;
+            ajuste de objeto: center;
         }
 
-        .header-text {
+        .texto do cabecalho {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+            flexão direcional: coluna;
+            alinhar-itens: início flexível;
+            alinhamento de texto: esquerda;
         }
 
         h1 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.025em;
-            line-height: 1.2;
+            tamanho da fonte: 1,35rem;
+            peso da fonte: 700;
+            cor: var(--texto-primario);
+            espaçamento entre letras: -0,025em;
+            altura da linha: 1.2;
         }
 
-        p.subtitle {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 0.2rem;
-            line-height: 1.2;
+        p.legenda {
+            tamanho da fonte: 0,85rem;
+            cor: var(--texto-secundario);
+            peso da fonte: 400;
         }
 
-        .header-right {
+        .cabecalho-direita {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
+            flexão direcional: extremidade flexível;
+            brecha: 4px;
         }
 
-        button.mic-btn {
-            background-color: var(--accent);
-            color: #0f172a;
-            border: none;
-            padding: 8px 14px;
-            font-size: 13px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
+        botão, botão de microfone {
+            cor de fundo: var(--destaque);
+            color: #F8FAFC;
+            fronteira: nenhuma;
+            acolchoamento: 8px 14px;
+            tamanho da fonte: 13px;
+            raio-da-borda: 8px;
+            cursor: ponteiro;
+            peso da fonte: áudio/oásis;
+            transição: fundos 0.2s;
         }
 
-        button.mic-btn:hover {
-            background-color: var(--accent-hover);
+        botão.botão de microfone.parar {
+            cor de fundo: var(--accent-hover);
         }
 
-        button.mic-btn.listening {
-            background-color: #d32f2f;
-            color: white;
-            animation: pulse 1.5s infinite;
+        botão.botão de microfone.audioSo {
+            cor de fundo: #D32F2F;
+            cor: branco;
+            animação: pulso 1.5s infinito;
         }
 
-        #voiceStatus {
-            font-size: 11px;
-            color: var(--text-secondary);
+        .status de voz {
+            tamanho da fonte: 11px;
+            cor: var(--texto-secundario);
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        @keyframes pulso {
+            0% { opacidade: 1; }
+            50% { opacidade: 0.5; }
+            100% { opacidade: 1; }
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.85rem;
-            width: 100%;
+        .grade {
+            display: grade;
+            colunas-modelo-grade: repita(ajuste automático, mínimo máximo (210px, 1fr));
+            brechas: 1,25rem;
+            largura: 100%;
         }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(12px);
+        .cartao {
+            fundos: var(--card-bg);
+            fronteira: 1px solid var(--borda-do-cartao);
+            filtro de fundo: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 10px;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 85px;
+            raio-da-borda: 16px;
+            acolchoamento: 1.25rem;
+            cursor: ponteiro;
+            transição: transform 0.2s facilidade;
+            mostrarflexível: verdadeiro;
+            flexão direcional: coluna;
+            justificar-conteúdo: espaço entre;
+            altura mínima: 85px;
         }
 
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.3);
+        .cartao:parar {
+            cor da borda: var(--destaque);
+            transformar: traduzirY(-2px);
+            sombra de caixa: 0px 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .card:active {
-            transform: scale(0.98);
+        .cartao:ativo {
+            transformar: escala(0,98);
         }
 
-        .device-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-            word-break: break-word;
+        .nome-do-dispositivo {
+            tamanho da fonte: 0,95rem;
+            peso da fonte: 600;
+            cor: var(--texto-primario);
+            margens inferiores: 0,5rem;
+            quebra de palavrapalavra-quebra;
         }
 
-        .device-status {
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: var(--text-secondary);
+        .status do dispositivo {
+            tamanho da fonte: 0,75rem;
+            peso da fonte: 500;
+            cor: var(--texto-secundario);
         }
 
-        .card.on .device-status {
-            color: #22c55e;
+        .cartão.sobre.status do dispositivo {
+            cor: 02Bcc9fc;
         }
 
-        .card.off .device-status {
-            color: #ef4444;
+        .cartão.desligado.status do dispositivo {
+            cor: #ef4444;
         }
 
-        @media (min-width: 640px) {
+        @media (largura mínima: 640px) {
             body {
-                padding: 2rem 1.5rem;
+                acolchoamento: 2rem 1rem;
             }
-            header {
-                gap: 1.25rem;
-                margin-bottom: 2.5rem;
-                padding-bottom: 1.25rem;
+            .cabecalho {
+                brechas: 1,25rem;
+                margem inferior: 1,75rem;
+                acolchoamento inferior: 1,25rem;
             }
-            .logo-container {
-                width: 56px;
-                height: 56px;
+            .cotainer-de-logotipo {
+                largura: 56px;
+                altura: 56px;
             }
             h1 {
-                font-size: 1.6rem;
+                tamanho da fonte: 1,6rem;
             }
-            p.subtitle {
-                font-size: 0.95rem;
+            p.legenda {
+                tamanho da fonte: 0,95rem;
             }
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                gap: 1.15rem;
+            .grade {
+                colunas-modelo-grade: repita(ajuste automático, mínimo máximo (230px, 1fr));
+                brechas: 1,5rem;
             }
-            .card {
-                padding: 1.25rem;
-                min-height: 100px;
-            }
-            .device-name {
-                font-size: 1.05rem;
-            }
-            .device-status {
-                font-size: 0.85rem;
+            .cartao {
+                altura mínima: 100px;
+                nome-do-dispositivo: 1,05rem;
+                status do dispositivo: 1,05rem;
             }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <header>
-            <div class="header-left">
-                <div class="logo-container">
-                    <img src="logo.png" alt="Logótipo">
+    <div class="recipiente">
+        <header class="cabecalho">
+            <div class="cabecalho-esquerda">
+                <div class="cotainer-de-logotipo">
+                    <img src="logo.png.all" alt="Logotipo">
                 </div>
-                <div class="header-text">
-                    <h1>Pedro Nuno</h1>
-                    <p class="subtitle">Engenho e Tecnologia — Controlo Local</p>
+                <div class="texto do cabecalho">
+                    <h1>Pedro Nuno - Engenho e Tecnologia</h1>
+                    <p class="legenda">Controle Local</p>
                 </div>
             </div>
-            <div class="header-right">
-                <button id="micBtn" class="mic-btn" onclick="toggleVoiceControl()">🎙️ Comando por Voz</button>
-                <span id="voiceStatus">Em repouso</span>
+            <div class="cabecalho-direita">
+                <button id="micBtn" class="botão de microfone" onclick="alternarControleDeVoz()">Comando por Voz</button>
+                <div id="statusVoz" class="status de voz"></div>
             </div>
         </header>
 
-        <main class="grid" id="deviceGrid">
-            <!-- Dispositivos exatos retirados das fotografias -->
+        <main class="grade" id="rede de dispositivos">
+            <!-- Dispositivos injetados por JavaScript -->
         </main>
     </div>
 
     <script>
-        const devices = [
-            { name: "sala", state: false },
-            { name: "sala de estar", state: false },
-            { name: "Setup", state: false },
-            { name: "luz do quarto", state: false },
-            { name: "WC", state: false },
-            { name: "luz do laboratório", state: false },
-            { name: "bancada", state: false },
-            { name: "candeeiro da xana", state: false },
-            { name: "Candeeiro do Pedro (Antigo)", state: false },
-            { name: "cozinha", state: false },
-            { name: "fonte de alimentação", state: false },
-            { name: "candeeiro do Pedro", state: false },
-            { name: "Quarto", state: false },
-            { name: "TV", state: false },
-            { name: "sensor de porta", state: false },
-            { name: "IR inteligente", state: false },
-            { name: "Campainha inteligente", state: false },
-            { name: "TV box", state: false }
+        const dispositivos = [
+            { nome: "Sala", estado: falso },
+            { nome: "Sala de Estar", estado: falso },
+            { nome: "Corredor", estado: falso },
+            { nome: "Luz do Quarto", estado: falso },
+            { nome: "BANHEIRO", estado: falso },
+            { nome: "Quarto Principal", estado: falso },
+            { nome: "bancada", estado: falso },
+            { nome: "Ar Condicionado", estado: falso },
+            { nome: "Candeeiro (Antigo)", estado: falso },
+            { nome: "Cozinha", estado: falso },
+            { nome: "Candeeiro (Estúdio)", estado: falso },
+            { nome: "Sala de Jantar", estado: falso },
+            { nome: "Gabinete", estado: falso },
+            { nome: "TV", estado: falso },
+            { nome: "Computador", estado: falso },
+            { nome: "IR Inteligente", estado: falso },
+            { nome: "Luz do Estúdio", estado: falso },
+            { nome: "Quarto", estado: falso },
+            { nome: "TV, Estúdio", estado: falso },
+            { nome: "Tomada Inteligente", estado: falso }
         ];
 
-        function renderDevices() {
-            const grid = document.getElementById('deviceGrid');
-            grid.innerHTML = '';
-            
-            devices.forEach((dev, index) => {
-                const card = document.createElement('div');
-                card.className = `card ${dev.state ? 'on' : 'off'}`;
-                card.onclick = (evt) => triggerDevice(index, evt);
+        function dispositivosDeRenderização() {
+            const grade = document.getElementById('rede de dispositivos');
+            grade.innerHTML = '';
 
-                const statusText = dev.state ? 'LIGADO' : 'DESLIGADO';
+            dispositivos.forEach((dispositivo, indice) => {
+                const cartao = document.createElement('div');
+                cartao.className = `cartao ${dispositivo.estado ? 'sobre' : 'desligado'}`;
+                cartao.onclick = () => dispositivoDeGatilho(indice);
 
-                card.innerHTML = `
-                    <div class="device-name">${dev.name}</div>
-                    <div class="device-status">${statusText}</div>
+                cartao.innerHTML = `
+                    <div class="nome-do-dispositivo">${dispositivo.nome}</div>
+                    <div class="status do dispositivo">${dispositivo.estado ? 'LIGADO' : 'DESLIGADO'}</div>
                 `;
-                grid.appendChild(card);
+                grade.appendChild(cartao);
             });
         }
 
-        function triggerDevice(index, evt) {
-            devices[index].state = !devices[index].state;
-            renderDevices();
-            // Execução isolada localmente no painel web, sem abrir aplicações externas
+        function dispositivoDeGatilho(indice) {
+            // Execução estritamente local no painel web, sem abrir aplicações externas ou deep-links
+            dispositivos[indice].estado = !dispositivos[indice].estado;
+            dispositivosDeRenderização();
         }
 
-        let recognition;
-        let isListening = false;
+        // Suporte a reconhecimento de voz local opcional
+        let reconhecimento = null;
+        let estaOuvindo = falso;
 
-        function toggleVoiceControl() {
+        function alternarControleDeVoz() {
             const micBtn = document.getElementById('micBtn');
-            const voiceStatus = document.getElementById('voiceStatus');
+            const statusVoz = document.getElementById('statusVoz');
 
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                alert('O seu browser não suporta reconhecimento de voz.');
+                alert('O seu navegador não suporta reconhecimento de voz.');
                 return;
             }
 
-            if (isListening) {
-                recognition.stop();
+            if (estaOuvindo) {
+                if (reconhecimento) reconhecimento.stop();
                 return;
             }
 
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.lang = 'pt-PT';
-            recognition.continuous = false;
-            recognition.interimResults = false;
+            reconhecimento = new SpeechRecognition();
+            reconhecimento.lang = 'pt-PT';
+            reconhecimento.continuous = falso;
+            reconhecimento.interimResults = falso;
 
-            recognition.onstart = function() {
-                isListening = true;
-                micBtn.classList.add('listening');
-                micBtn.innerText = '🔴 A Ouvir...';
-                voiceStatus.innerText = 'Ouvindo...';
+            reconhecimento.onstart = () => {
+                estaOuvindo = verdadeiro;
+                micBtn.className = 'botão de microfone audioSo';
+                micBtn.innerText = 'A ouvir...';
+                statusVoz.innerText = 'Ouvindo comando...';
             };
 
-            recognition.onresult = function(event) {
-                const speechResult = event.results[0][0].transcript.toLowerCase();
-                voiceStatus.innerText = '"' + speechResult + '"';
-                processVoiceCommand(speechResult);
+            reconhecimento.onresult = (evento) => {
+                const textoFala = evento.results[0][0].transcript.toLowerCase();
+                statusVoz.innerText = `Resultado: "${textoFala}"`;
+                processarComandoDeVoz(textoFala);
             };
 
-            recognition.onerror = function() {
-                voiceStatus.innerText = 'Erro de voz';
+            reconhecimento.onerror = () => {
+                statusVoz.innerText = 'Erro de voz';
             };
 
-            recognition.onend = function() {
-                isListening = false;
-                micBtn.classList.remove('listening');
-                micBtn.innerText = '🎙️ Comando por Voz';
+            reconhecimento.onend = () => {
+                estaOuvindo = falso;
+                micBtn.className = 'botão de microfone';
+                micBtn.innerText = 'Comando por Voz';
             };
 
-            recognition.start();
+            reconhecimento.start();
         }
 
-        function processVoiceCommand(command) {
-            let matched = false;
-            const cleanCommand = command.toLowerCase();
+        function processarComandoDeVoz(texto) {
+            let acaoLigar = texto.includes('ligar') || texto.includes('liga');
+            let acaoDesligar = texto.includes('desligar') || texto.includes('desliga');
 
-            devices.forEach(dev => {
-                const devName = dev.name.toLowerCase();
-                if (cleanCommand.includes(devName)) {
-                    if (cleanCommand.includes('ligar') || cleanCommand.includes('liga')) {
-                        dev.state = true;
-                        matched = true;
-                    } else if (cleanCommand.includes('desligar') || cleanCommand.includes('desliga')) {
-                        dev.state = false;
-                        matched = true;
-                    }
+            dispositivos.forEach((dispositivo, indice) => {
+                const nomeDev = dispositivo.nome.toLowerCase();
+                if (texto.includes(nomeDev)) {
+                    if (acaoLigar) dispositivos[indice].estado = verdadeiro;
+                    if (acaoDesligar) dispositivos[indice].estado = falso;
                 }
             });
-
-            if (!matched) {
-                voiceStatus.innerText += ' (Não reconhecido)';
-            }
-            renderDevices();
+            dispositivosDeRenderização();
         }
 
-        renderDevices();
+        // Inicialização da grade na carga da página
+        dispositivosDeRenderização();
     </script>
 </body>
 </html>
