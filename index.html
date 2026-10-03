@@ -6,13 +6,13 @@
     <title>Pedro Nuno - Engenho e Tecnologia</title>
     <style>
         :root {
-            --cor-de-fundo: #0F172A;
+            --cor-fundo: #0F172A;
             --card-bg: rgba(30, 41, 59, 0.75);
             --borda-do-cartao: rgba(255, 255, 255, 0.1);
             --texto-primario: #F8FAFC;
             --texto-secundario: #94A3B8;
-            -- destaque: #0A569;
-            --accent-hover: #0a569;
+            --destaque: #0284c7;
+            --accent-hover: #02659f;
         }
 
         * {
@@ -24,7 +24,7 @@
         }
 
         body {
-            background-color: var(--cor-de-fundo);
+            background-color: var(--cor-fundo);
             color: var(--texto-primario);
             min-height: 100vh;
             padding: 1.25rem 0.75rem;
@@ -42,7 +42,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            brechas: 1rem;
+            gap: 1rem;
             margin-bottom: 1.5rem;
             border-bottom: 1px solid var(--borda-do-cartao);
             padding-bottom: 1rem;
@@ -52,169 +52,167 @@
         .cabecalho-esquerda {
             display: flex;
             align-items: center;
-            brechas: 1rem;
+            gap: 1rem;
         }
 
-        .cotainer-de-logotipo {
+        .container-de-logotipo {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 48px;
             height: 48px;
-            fundos: var(--card-bg);
-            fronteira: 1px solid var(--borda-do-cartao);
-            raio-da-borda: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--borda-do-cartao);
+            border-radius: 10px;
             backdrop-filter: blur(12px);
-            transição: ascendente 0.2s;
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        .cotainer-de-logotipo img {
-            largura: 100%;
-            altura: 100%;
-            ajuste de objeto: center;
+        .container-de-logotipo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .texto do cabecalho {
+        .texto-do-cabecalho {
             display: flex;
-            flexão direcional: coluna;
-            alinhar-itens: início flexível;
-            alinhamento de texto: esquerda;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
         }
 
         h1 {
-            tamanho da fonte: 1,35rem;
-            peso da fonte: 700;
-            cor: var(--texto-primario);
-            espaçamento entre letras: -0,025em;
-            altura da linha: 1.2;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--texto-primario);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
         }
 
         p.legenda {
-            tamanho da fonte: 0,85rem;
-            cor: var(--texto-secundario);
-            peso da fonte: 400;
+            font-size: 0.85rem;
+            color: var(--texto-secundario);
+            font-weight: 400;
         }
 
         .cabecalho-direita {
             display: flex;
-            flexão direcional: extremidade flexível;
-            brecha: 4px;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
         }
 
-        botão, botão de microfone {
-            cor de fundo: var(--destaque);
+        button, .botao-de-microfone {
+            background-color: var(--destaque);
             color: #F8FAFC;
-            fronteira: nenhuma;
-            acolchoamento: 8px 14px;
-            tamanho da fonte: 13px;
-            raio-da-borda: 8px;
-            cursor: ponteiro;
-            peso da fonte: áudio/oásis;
-            transição: fundos 0.2s;
+            border: none;
+            padding: 8px 14px;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
         }
 
-        botão.botão de microfone.parar {
-            cor de fundo: var(--accent-hover);
+        button.parar {
+            background-color: var(--accent-hover);
         }
 
-        botão.botão de microfone.audioSo {
-            cor de fundo: #D32F2F;
-            cor: branco;
-            animação: pulso 1.5s infinito;
+        button.audio-ouvindo {
+            background-color: #D32F2F;
+            color: #ffffff;
+            animation: pulso 1.5s infinite;
         }
 
-        .status de voz {
-            tamanho da fonte: 11px;
-            cor: var(--texto-secundario);
+        .status-de-voz {
+            font-size: 11px;
+            color: var(--texto-secundario);
         }
 
         @keyframes pulso {
-            0% { opacidade: 1; }
-            50% { opacidade: 0.5; }
-            100% { opacidade: 1; }
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         .grade {
-            display: grade;
-            colunas-modelo-grade: repita(ajuste automático, mínimo máximo (210px, 1fr));
-            brechas: 1,25rem;
-            largura: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1.25rem;
+            width: 100%;
         }
 
         .cartao {
-            fundos: var(--card-bg);
-            fronteira: 1px solid var(--borda-do-cartao);
-            filtro de fundo: blur(12px);
+            background: var(--card-bg);
+            border: 1px solid var(--borda-do-cartao);
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            raio-da-borda: 16px;
-            acolchoamento: 1.25rem;
-            cursor: ponteiro;
-            transição: transform 0.2s facilidade;
-            mostrarflexível: verdadeiro;
-            flexão direcional: coluna;
-            justificar-conteúdo: espaço entre;
-            altura mínima: 85px;
+            border-radius: 16px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 85px;
         }
 
-        .cartao:parar {
-            cor da borda: var(--destaque);
-            transformar: traduzirY(-2px);
-            sombra de caixa: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        .cartao:hover {
+            border-color: var(--destaque);
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .cartao:ativo {
-            transformar: escala(0,98);
+        .cartao:active {
+            transform: scale(0.98);
         }
 
         .nome-do-dispositivo {
-            tamanho da fonte: 0,95rem;
-            peso da fonte: 600;
-            cor: var(--texto-primario);
-            margens inferiores: 0,5rem;
-            quebra de palavrapalavra-quebra;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--texto-primario);
+            margin-bottom: 0.5rem;
+            word-break: break-word;
         }
 
-        .status do dispositivo {
-            tamanho da fonte: 0,75rem;
-            peso da fonte: 500;
-            cor: var(--texto-secundario);
+        .status-do-dispositivo {
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
-        .cartão.sobre.status do dispositivo {
-            cor: 02Bcc9fc;
+        .cartao.ligado .status-do-dispositivo {
+            color: #38bdf8;
         }
 
-        .cartão.desligado.status do dispositivo {
-            cor: #ef4444;
+        .cartao.desligado .status-do-dispositivo {
+            color: #ef4444;
         }
 
-        @media (largura mínima: 640px) {
+        @media (min-width: 640px) {
             body {
-                acolchoamento: 2rem 1rem;
+                padding: 2rem 1rem;
             }
             .cabecalho {
-                brechas: 1,25rem;
-                margem inferior: 1,75rem;
-                acolchoamento inferior: 1,25rem;
+                gap: 1.25rem;
+                margin-bottom: 1.75rem;
+                padding-bottom: 1.25rem;
             }
-            .cotainer-de-logotipo {
-                largura: 56px;
-                altura: 56px;
+            .container-de-logotipo {
+                width: 56px;
+                height: 56px;
             }
             h1 {
-                tamanho da fonte: 1,6rem;
+                font-size: 1.6rem;
             }
             p.legenda {
-                tamanho da fonte: 0,95rem;
+                font-size: 0.95rem;
             }
             .grade {
-                colunas-modelo-grade: repita(ajuste automático, mínimo máximo (230px, 1fr));
-                brechas: 1,5rem;
+                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+                gap: 1.5rem;
             }
             .cartao {
-                altura mínima: 100px;
-                nome-do-dispositivo: 1,05rem;
-                status do dispositivo: 1,05rem;
+                min-height: 100px;
             }
         }
     </style>
@@ -223,75 +221,73 @@
     <div class="recipiente">
         <header class="cabecalho">
             <div class="cabecalho-esquerda">
-                <div class="cotainer-de-logotipo">
-                    <img src="logo.png.all" alt="Logotipo">
+                <div class="container-de-logotipo">
+                    <img src="logo.png" alt="Logotipo">
                 </div>
-                <div class="texto do cabecalho">
+                <div class="texto-do-cabecalho">
                     <h1>Pedro Nuno - Engenho e Tecnologia</h1>
                     <p class="legenda">Controle Local</p>
                 </div>
             </div>
             <div class="cabecalho-direita">
-                <button id="micBtn" class="botão de microfone" onclick="alternarControleDeVoz()">Comando por Voz</button>
-                <div id="statusVoz" class="status de voz"></div>
+                <button id="micBtn" onclick="alternarControleDeVoz()">Comando por Voz</button>
+                <div id="statusVoz" class="status-de-voz"></div>
             </div>
         </header>
 
-        <main class="grade" id="rede de dispositivos">
+        <main class="grade" id="rede-de-dispositivos">
             <!-- Dispositivos injetados por JavaScript -->
         </main>
     </div>
 
     <script>
         const dispositivos = [
-            { nome: "Sala", estado: falso },
-            { nome: "Sala de Estar", estado: falso },
-            { nome: "Corredor", estado: falso },
-            { nome: "Luz do Quarto", estado: falso },
-            { nome: "BANHEIRO", estado: falso },
-            { nome: "Quarto Principal", estado: falso },
-            { nome: "bancada", estado: falso },
-            { nome: "Ar Condicionado", estado: falso },
-            { nome: "Candeeiro (Antigo)", estado: falso },
-            { nome: "Cozinha", estado: falso },
-            { nome: "Candeeiro (Estúdio)", estado: falso },
-            { nome: "Sala de Jantar", estado: falso },
-            { nome: "Gabinete", estado: falso },
-            { nome: "TV", estado: falso },
-            { nome: "Computador", estado: falso },
-            { nome: "IR Inteligente", estado: falso },
-            { nome: "Luz do Estúdio", estado: falso },
-            { nome: "Quarto", estado: falso },
-            { nome: "TV, Estúdio", estado: falso },
-            { nome: "Tomada Inteligente", estado: falso }
+            { nome: "Sala", estado: false },
+            { nome: "Sala de Estar", estado: false },
+            { nome: "Corredor", estado: false },
+            { nome: "Luz do Quarto", estado: false },
+            { nome: "BANHEIRO", estado: false },
+            { nome: "Quarto Principal", estado: false },
+            { nome: "bancada", estado: false },
+            { nome: "Ar Condicionado", estado: false },
+            { nome: "Candeeiro (Antigo)", estado: false },
+            { nome: "Cozinha", estado: false },
+            { nome: "Candeeiro (Estúdio)", estado: false },
+            { nome: "Sala de Jantar", estado: false },
+            { nome: "Gabinete", estado: false },
+            { nome: "TV", estado: false },
+            { nome: "Computador", estado: false },
+            { nome: "IR Inteligente", estado: false },
+            { nome: "Luz do Estúdio", estado: false },
+            { nome: "Quarto", estado: false },
+            { nome: "TV, Estúdio", estado: false },
+            { nome: "Tomada Inteligente", estado: false }
         ];
 
-        function dispositivosDeRenderização() {
-            const grade = document.getElementById('rede de dispositivos');
+        function dispositivosDeRenderizacao() {
+            const grade = document.getElementById('rede-de-dispositivos');
             grade.innerHTML = '';
 
             dispositivos.forEach((dispositivo, indice) => {
                 const cartao = document.createElement('div');
-                cartao.className = `cartao ${dispositivo.estado ? 'sobre' : 'desligado'}`;
+                cartao.className = `cartao ${dispositivo.estado ? 'ligado' : 'desligado'}`;
                 cartao.onclick = () => dispositivoDeGatilho(indice);
 
                 cartao.innerHTML = `
                     <div class="nome-do-dispositivo">${dispositivo.nome}</div>
-                    <div class="status do dispositivo">${dispositivo.estado ? 'LIGADO' : 'DESLIGADO'}</div>
+                    <div class="status-do-dispositivo">${dispositivo.estado ? 'LIGADO' : 'DESLIGADO'}</div>
                 `;
                 grade.appendChild(cartao);
             });
         }
 
         function dispositivoDeGatilho(indice) {
-            // Execução estritamente local no painel web, sem abrir aplicações externas ou deep-links
             dispositivos[indice].estado = !dispositivos[indice].estado;
-            dispositivosDeRenderização();
+            dispositivosDeRenderizacao();
         }
 
-        // Suporte a reconhecimento de voz local opcional
         let reconhecimento = null;
-        let estaOuvindo = falso;
+        let estaOuvindo = false;
 
         function alternarControleDeVoz() {
             const micBtn = document.getElementById('micBtn');
@@ -310,12 +306,12 @@
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             reconhecimento = new SpeechRecognition();
             reconhecimento.lang = 'pt-PT';
-            reconhecimento.continuous = falso;
-            reconhecimento.interimResults = falso;
+            reconhecimento.continuous = false;
+            reconhecimento.interimResults = false;
 
             reconhecimento.onstart = () => {
-                estaOuvindo = verdadeiro;
-                micBtn.className = 'botão de microfone audioSo';
+                estaOuvindo = true;
+                micBtn.className = 'audio-ouvindo';
                 micBtn.innerText = 'A ouvir...';
                 statusVoz.innerText = 'Ouvindo comando...';
             };
@@ -331,8 +327,8 @@
             };
 
             reconhecimento.onend = () => {
-                estaOuvindo = falso;
-                micBtn.className = 'botão de microfone';
+                estaOuvindo = false;
+                micBtn.className = '';
                 micBtn.innerText = 'Comando por Voz';
             };
 
@@ -346,15 +342,14 @@
             dispositivos.forEach((dispositivo, indice) => {
                 const nomeDev = dispositivo.nome.toLowerCase();
                 if (texto.includes(nomeDev)) {
-                    if (acaoLigar) dispositivos[indice].estado = verdadeiro;
-                    if (acaoDesligar) dispositivos[indice].estado = falso;
+                    if (acaoLigar) dispositivos[indice].estado = true;
+                    if (acaoDesligar) dispositivos[indice].estado = false;
                 }
             });
-            dispositivosDeRenderização();
+            dispositivosDeRenderizacao();
         }
 
-        // Inicialização da grade na carga da página
-        dispositivosDeRenderização();
+        dispositivosDeRenderizacao();
     </script>
 </body>
 </html>
