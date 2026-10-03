@@ -294,9 +294,7 @@
         function triggerDevice(index, evt) {
             devices[index].state = !devices[index].state;
             renderDevices();
-
-            // Ação original de Deep Link para o Smart Life
-            window.location.href = "smartlife://";
+            // Execução isolada localmente no painel web, sem abrir aplicações externas
         }
 
         let recognition;
