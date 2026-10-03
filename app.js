@@ -32,16 +32,11 @@ function triggerDevice(deviceKey) {
         return;
     }
 
-    // Deep link direto para a aplicação Smart Life em background com o ID específico
     const smartLifeDeepLink = `smartlife://device?id=${device.id}`;
-    
-    console.link(`A acionar [${device.name}] (ID: ${device.id}) via Smart Life...`);
-    
-    // Dispara o esquema de URI diretamente no browser do telemóvel
+    console.log(`A acionar [${device.name}] (ID: ${device.id}) via Smart Life...`);
     window.location.href = smartLifeDeepLink;
 }
 
-// Inicialização da Dashboard
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Dashboard 'Pedro Nuno Engenho e Tecnologia' carregada com sucesso.");
 });
