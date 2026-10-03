@@ -41,12 +41,18 @@
         header {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             gap: 1rem;
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--card-border);
             padding-bottom: 1rem;
             width: 100%;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .logo-container {
@@ -88,6 +94,46 @@
             color: var(--text-secondary);
             margin-top: 0.2rem;
             line-height: 1.2;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        button.mic-btn {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 8px 14px;
+            font-size: 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        button.mic-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        button.mic-btn.listening {
+            background-color: #d32f2f;
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+
+        #voiceStatus {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         .grid {
@@ -132,7 +178,16 @@
 
         .device-status {
             font-size: 0.75rem;
+            font-weight: bold;
             color: var(--text-secondary);
+        }
+
+        .card.on .device-status {
+            color: #22c55e;
+        }
+
+        .card.off .device-status {
+            color: #ef4444;
         }
 
         @media (min-width: 640px) {
@@ -175,95 +230,148 @@
 
     <div class="container">
         <header>
-            <div class="logo-container">
-                <img src="logo.png" alt="Logótipo">
+            <div class="header-left">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Logótipo">
+                </div>
+                <div class="header-text">
+                    <h1>Pedro Nuno</h1>
+                    <p class="subtitle">Engenho e Tecnologia — Controlo Local</p>
+                </div>
             </div>
-            <div class="header-text">
-                <h1>Pedro Nuno</h1>
-                <p class="subtitle">Engenho e Tecnologia — Controlo Local</p>
+            <div class="header-right">
+                <button id="micBtn" class="mic-btn" onclick="toggleVoiceControl()">🎙️ Comando por Voz</button>
+                <span id="voiceStatus">Em repouso</span>
             </div>
         </header>
 
-        <main class="grid">
-            <!-- 10 Dispositivos da Página 1 -->
-            <div class="card" onclick="triggerDevice('sala', event)">
-                <div class="device-name">sala</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('sala de estar', event)">
-                <div class="device-name">sala de estar</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('setup', event)">
-                <div class="device-name">Setup</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('luz do quarto', event)">
-                <div class="device-name">luz do quarto</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('WC', event)">
-                <div class="device-name">WC</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('luz do laboratório', event)">
-                <div class="device-name">luz do laboratório</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('bancada', event)">
-                <div class="device-name">bancada</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('candeeiro da xana', event)">
-                <div class="device-name">candeeiro da xana</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('candeeiro do pedro', event)">
-                <div class="device-name">Candeeiro do Pedro (Antigo)</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('cozinha', event)">
-                <div class="device-name">cozinha</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-
-            <!-- 8 Dispositivos da Página 2 -->
-            <div class="card" onclick="triggerDevice('fonte de alimentação', event)">
-                <div class="device-name">fonte de alimentação</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('candeeiro do Pedro', event)">
-                <div class="device-name">candeeiro do Pedro</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('Quarto', event)">
-                <div class="device-name">Quarto</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('TV', event)">
-                <div class="device-name">TV</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('sensor de porta', event)">
-                <div class="device-name">sensor de porta</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('IR inteligente', event)">
-                <div class="device-name">IR inteligente</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('Campainha inteligente', event)">
-                <div class="device-name">Campainha inteligente</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
-            <div class="card" onclick="triggerDevice('TV box', event)">
-                <div class="device-name">TV box</div>
-                <div class="device-status">Toque para alternar</div>
-            </div>
+        <main class="grid" id="deviceGrid">
+            <!-- Dispositivos exatos retirados das fotografias -->
         </main>
     </div>
 
-    <!-- Script separado para gerir a lógica da API Tuya sem servidores -->
-    <script src="app.js"></script>
+    <script>
+        const devices = [
+            { name: "sala", state: false },
+            { name: "sala de estar", state: false },
+            { name: "Setup", state: false },
+            { name: "luz do quarto", state: false },
+            { name: "WC", state: false },
+            { name: "luz do laboratório", state: false },
+            { name: "bancada", state: false },
+            { name: "candeeiro da xana", state: false },
+            { name: "Candeeiro do Pedro (Antigo)", state: false },
+            { name: "cozinha", state: false },
+            { name: "fonte de alimentação", state: false },
+            { name: "candeeiro do Pedro", state: false },
+            { name: "Quarto", state: false },
+            { name: "TV", state: false },
+            { name: "sensor de porta", state: false },
+            { name: "IR inteligente", state: false },
+            { name: "Campainha inteligente", state: false },
+            { name: "TV box", state: false }
+        ];
+
+        function renderDevices() {
+            const grid = document.getElementById('deviceGrid');
+            grid.innerHTML = '';
+            
+            devices.forEach((dev, index) => {
+                const card = document.createElement('div');
+                card.className = `card ${dev.state ? 'on' : 'off'}`;
+                card.onclick = (evt) => triggerDevice(index, evt);
+
+                const statusText = dev.state ? 'LIGADO' : 'DESLIGADO';
+
+                card.innerHTML = `
+                    <div class="device-name">${dev.name}</div>
+                    <div class="device-status">${statusText}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function triggerDevice(index, evt) {
+            devices[index].state = !devices[index].state;
+            renderDevices();
+
+            // Ação original de Deep Link para o Smart Life
+            window.location.href = "smartlife://";
+        }
+
+        let recognition;
+        let isListening = false;
+
+        function toggleVoiceControl() {
+            const micBtn = document.getElementById('micBtn');
+            const voiceStatus = document.getElementById('voiceStatus');
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('O seu browser não suporta reconhecimento de voz.');
+                return;
+            }
+
+            if (isListening) {
+                recognition.stop();
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'pt-PT';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.onstart = function() {
+                isListening = true;
+                micBtn.classList.add('listening');
+                micBtn.innerText = '🔴 A Ouvir...';
+                voiceStatus.innerText = 'Ouvindo...';
+            };
+
+            recognition.onresult = function(event) {
+                const speechResult = event.results[0][0].transcript.toLowerCase();
+                voiceStatus.innerText = '"' + speechResult + '"';
+                processVoiceCommand(speechResult);
+            };
+
+            recognition.onerror = function() {
+                voiceStatus.innerText = 'Erro de voz';
+            };
+
+            recognition.onend = function() {
+                isListening = false;
+                micBtn.classList.remove('listening');
+                micBtn.innerText = '🎙️ Comando por Voz';
+            };
+
+            recognition.start();
+        }
+
+        function processVoiceCommand(command) {
+            let matched = false;
+            const cleanCommand = command.toLowerCase();
+
+            devices.forEach(dev => {
+                const devName = dev.name.toLowerCase();
+                if (cleanCommand.includes(devName)) {
+                    if (cleanCommand.includes('ligar') || cleanCommand.includes('liga')) {
+                        dev.state = true;
+                        matched = true;
+                    } else if (cleanCommand.includes('desligar') || cleanCommand.includes('desliga')) {
+                        dev.state = false;
+                        matched = true;
+                    }
+                }
+            });
+
+            if (!matched) {
+                voiceStatus.innerText += ' (Não reconhecido)';
+            }
+            renderDevices();
+        }
+
+        renderDevices();
+    </script>
 </body>
 </html>
