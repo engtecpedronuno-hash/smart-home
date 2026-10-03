@@ -3,353 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Nuno - Engenho e Tecnologia</title>
+    <title>Pedro Nuno - Engenho e Tecnologia - Controle Local</title>
     <style>
-        :root {
-            --cor-fundo: #0F172A;
-            --card-bg: rgba(30, 41, 59, 0.75);
-            --borda-do-cartao: rgba(255, 255, 255, 0.1);
-            --texto-primario: #F8FAFC;
-            --texto-secundario: #94A3B8;
-            --destaque: #0284c7;
-            --accent-hover: #02659f;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            font-family: Arial, sans-serif;
         }
-
         body {
-            background-color: var(--cor-fundo);
-            color: var(--texto-primario);
-            min-height: 100vh;
-            padding: 1.25rem 0.75rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-color: #0d1b2a;
+            color: #ffffff;
+            padding: 10px;
         }
-
-        .recipiente {
-            width: 100%;
-            max-width: 1400px;
-        }
-
-        .cabecalho {
+        header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--borda-do-cartao);
-            padding-bottom: 1rem;
-            width: 100%;
+            flex-wrap: wrap;
+            padding: 15px 10px;
+            border-bottom: 1px solid #1b263b;
+            margin-bottom: 15px;
+            gap: 10px;
         }
-
-        .cabecalho-esquerda {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 12px;
+            flex: 1;
+            min-width: 200px;
         }
-
-        .container-de-logotipo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: var(--card-bg);
-            border: 1px solid var(--borda-do-cartao);
-            border-radius: 10px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        .logo-container img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            flex-shrink: 0;
+            border-radius: 6px;
         }
-
-        .container-de-logotipo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .texto-do-cabecalho {
+        .header-title {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+            justify-content: center;
         }
-
-        h1 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--texto-primario);
-            letter-spacing: -0.025em;
+        .header-title h1 {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffffff;
             line-height: 1.2;
         }
-
-        p.legenda {
-            font-size: 0.85rem;
-            color: var(--texto-secundario);
-            font-weight: 400;
+        .header-title span {
+            font-size: 0.75rem;
+            color: #94a3b8;
         }
-
-        .cabecalho-direita {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
-        }
-
-        button, .botao-de-microfone {
-            background-color: var(--destaque);
-            color: #F8FAFC;
+        .voice-btn {
+            background-color: #1e3a8a;
+            color: white;
             border: none;
             padding: 8px 14px;
-            font-size: 13px;
             border-radius: 8px;
+            font-weight: bold;
             cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.2s;
+            font-size: 0.85rem;
         }
-
-        button.parar {
-            background-color: var(--accent-hover);
-        }
-
-        button.audio-ouvindo {
-            background-color: #D32F2F;
-            color: #ffffff;
-            animation: pulso 1.5s infinite;
-        }
-
-        .status-de-voz {
-            font-size: 11px;
-            color: var(--texto-secundario);
-        }
-
-        @keyframes pulso {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .grade {
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 1.25rem;
-            width: 100%;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
         }
-
-        .cartao {
-            background: var(--card-bg);
-            border: 1px solid var(--borda-do-cartao);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 1.25rem;
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        .card {
+            background-color: #1b263b;
+            border-radius: 10px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 85px;
+            min-height: 90px;
+            cursor: pointer;
+            border: 1px solid #283850;
+            transition: background-color 0.2s;
         }
-
-        .cartao:hover {
-            border-color: var(--destaque);
-            transform: translateY(-2px);
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        .card:active {
+            background-color: #27374d;
         }
-
-        .cartao:active {
-            transform: scale(0.98);
-        }
-
-        .nome-do-dispositivo {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--texto-primario);
-            margin-bottom: 0.5rem;
+        .card-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #e2e8f0;
             word-break: break-word;
         }
-
-        .status-do-dispositivo {
+        .card-room {
             font-size: 0.75rem;
-            font-weight: 500;
+            color: #94a3b8;
+            margin-top: 4px;
         }
-
-        .cartao.ligado .status-do-dispositivo {
-            color: #38bdf8;
+        .card-status {
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 8px;
+            text-transform: uppercase;
         }
-
-        .cartao.desligado .status-do-dispositivo {
+        .status-off {
             color: #ef4444;
         }
-
-        @media (min-width: 640px) {
-            body {
-                padding: 2rem 1rem;
-            }
-            .cabecalho {
-                gap: 1.25rem;
-                margin-bottom: 1.75rem;
-                padding-bottom: 1.25rem;
-            }
-            .container-de-logotipo {
-                width: 56px;
-                height: 56px;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-            p.legenda {
-                font-size: 0.95rem;
-            }
-            .grade {
-                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-                gap: 1.5rem;
-            }
-            .cartao {
-                min-height: 100px;
-            }
+        .status-on {
+            color: #22c55e;
         }
     </style>
 </head>
 <body>
-    <div class="recipiente">
-        <header class="cabecalho">
-            <div class="cabecalho-esquerda">
-                <div class="container-de-logotipo">
-                    <img src="logo.png" alt="Logotipo">
-                </div>
-                <div class="texto-do-cabecalho">
-                    <h1>Pedro Nuno - Engenho e Tecnologia</h1>
-                    <p class="legenda">Controle Local</p>
-                </div>
-            </div>
-            <div class="cabecalho-direita">
-                <button id="micBtn" onclick="alternarControleDeVoz()">Comando por Voz</button>
-                <div id="statusVoz" class="status-de-voz"></div>
-            </div>
-        </header>
 
-        <main class="grade" id="rede-de-dispositivos">
-            <!-- Dispositivos injetados por JavaScript -->
-        </main>
+    <header>
+        <div class="logo-container">
+            <!-- Substitua o src pelo link correto ou imagem do seu logótipo -->
+            <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+            <div class="header-title">
+                <h1>Pedro Nuno - Engenho e Tecnologia</h1>
+                <span>Controle Local</span>
+            </div>
+        </div>
+        <button class="voice-btn" onclick="alert('Comando por voz ativo')">Comando por Voz</button>
+    </header>
+
+    <div class="grid-container" id="device-grid">
+        <!-- Dispositivos reais configurados -->
     </div>
 
     <script>
-        const dispositivos = [
-            { nome: "Sala", estado: false },
-            { nome: "Sala de Estar", estado: false },
-            { nome: "Corredor", estado: false },
-            { nome: "Luz do Quarto", estado: false },
-            { nome: "BANHEIRO", estado: false },
-            { nome: "Quarto Principal", estado: false },
-            { nome: "bancada", estado: false },
-            { nome: "Ar Condicionado", estado: false },
-            { nome: "Candeeiro (Antigo)", estado: false },
-            { nome: "Cozinha", estado: false },
-            { nome: "Candeeiro (Estúdio)", estado: false },
-            { nome: "Sala de Jantar", estado: false },
-            { nome: "Gabinete", estado: false },
-            { nome: "TV", estado: false },
-            { nome: "Computador", estado: false },
-            { nome: "IR Inteligente", estado: false },
-            { nome: "Luz do Estúdio", estado: false },
-            { nome: "Quarto", estado: false },
-            { nome: "TV, Estúdio", estado: false },
-            { nome: "Tomada Inteligente", estado: false }
+        const devices = [
+            { name: "sala", room: "Sala de Estar", status: false },
+            { name: "candeeiro do pedro", room: "Sala de Estar", status: false },
+            { name: "fonte de alimentação", room: "Sala de Estar", status: false },
+            { name: "sensor da porta", room: "Sala de Estar", status: false },
+            { name: "candeeiro da xana", room: "Sala de Estar", status: false },
+            { name: "Quarto", room: "Sala de Estar", status: false },
+            { name: "Setup", room: "Sala de Estar", status: false },
+            { name: "IR inteligente", room: "Sala de Estar", status: false },
+            { name: "sala de estar", room: "Sala de Estar", status: false },
+            { name: "Campainha inteligente", room: "Entrada", status: false },
+            { name: "bancada", room: "Entrada", status: false },
+            { name: "cozinha", room: "Cozinha", status: false },
+            { name: "luz do quarto", room: "Quarto principal", status: false },
+            { name: "luz do laboratório", room: "Sala de Estar", status: false },
+            { name: "WC", room: "Sala de Estar", status: false }
         ];
 
-        function dispositivosDeRenderizacao() {
-            const grade = document.getElementById('rede-de-dispositivos');
-            grade.innerHTML = '';
-
-            dispositivos.forEach((dispositivo, indice) => {
-                const cartao = document.createElement('div');
-                cartao.className = `cartao ${dispositivo.estado ? 'ligado' : 'desligado'}`;
-                cartao.onclick = () => dispositivoDeGatilho(indice);
-
-                cartao.innerHTML = `
-                    <div class="nome-do-dispositivo">${dispositivo.nome}</div>
-                    <div class="status-do-dispositivo">${dispositivo.estado ? 'LIGADO' : 'DESLIGADO'}</div>
+        function renderGrid() {
+            const grid = document.getElementById('device-grid');
+            grid.innerHTML = '';
+            devices.forEach((dev, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => toggleDevice(index);
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="card-title">${dev.name}</div>
+                        <div class="card-room">${dev.room}</div>
+                    </div>
+                    <div class="card-status ${dev.status ? 'status-on' : 'status-off'}">
+                        ${dev.status ? 'LIGADO' : 'DESLIGADO'}
+                    </div>
                 `;
-                grade.appendChild(cartao);
+                grid.appendChild(card);
             });
         }
 
-        function dispositivoDeGatilho(indice) {
-            dispositivos[indice].estado = !dispositivos[indice].estado;
-            dispositivosDeRenderizacao();
+        function toggleDevice(index) {
+            devices[index].status = !devices[index].status;
+            renderGrid();
         }
 
-        let reconhecimento = null;
-        let estaOuvindo = false;
-
-        function alternarControleDeVoz() {
-            const micBtn = document.getElementById('micBtn');
-            const statusVoz = document.getElementById('statusVoz');
-
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                alert('O seu navegador não suporta reconhecimento de voz.');
-                return;
-            }
-
-            if (estaOuvindo) {
-                if (reconhecimento) reconhecimento.stop();
-                return;
-            }
-
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            reconhecimento = new SpeechRecognition();
-            reconhecimento.lang = 'pt-PT';
-            reconhecimento.continuous = false;
-            reconhecimento.interimResults = false;
-
-            reconhecimento.onstart = () => {
-                estaOuvindo = true;
-                micBtn.className = 'audio-ouvindo';
-                micBtn.innerText = 'A ouvir...';
-                statusVoz.innerText = 'Ouvindo comando...';
-            };
-
-            reconhecimento.onresult = (evento) => {
-                const textoFala = evento.results[0][0].transcript.toLowerCase();
-                statusVoz.innerText = `Resultado: "${textoFala}"`;
-                processarComandoDeVoz(textoFala);
-            };
-
-            reconhecimento.onerror = () => {
-                statusVoz.innerText = 'Erro de voz';
-            };
-
-            reconhecimento.onend = () => {
-                estaOuvindo = false;
-                micBtn.className = '';
-                micBtn.innerText = 'Comando por Voz';
-            };
-
-            reconhecimento.start();
-        }
-
-        function processarComandoDeVoz(texto) {
-            let acaoLigar = texto.includes('ligar') || texto.includes('liga');
-            let acaoDesligar = texto.includes('desligar') || texto.includes('desliga');
-
-            dispositivos.forEach((dispositivo, indice) => {
-                const nomeDev = dispositivo.nome.toLowerCase();
-                if (texto.includes(nomeDev)) {
-                    if (acaoLigar) dispositivos[indice].estado = true;
-                    if (acaoDesligar) dispositivos[indice].estado = false;
-                }
-            });
-            dispositivosDeRenderizacao();
-        }
-
-        dispositivosDeRenderizacao();
+        renderGrid();
     </script>
 </body>
 </html>
