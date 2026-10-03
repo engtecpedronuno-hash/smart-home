@@ -1,5 +1,5 @@
 // =========================================================================
-// Mapeamento Oficial de Dispositivos - Projeto "Casa Pedro" (Tuya Cloud)
+// Mapeamento Direto de Dispositivos - "Pedro Nuno Engenho e Tecnologia"
 // =========================================================================
 const tuyaDevices = {
     wc: { id: "1751535534ab950f1c39", name: "WC", type: "W-W601" },
@@ -23,42 +23,25 @@ const tuyaDevices = {
 };
 
 // =========================================================================
-// Função de Envio de Comandos e Controlo para a API Tuya
+// Função de Acionamento Direto (Client-Side / Sem Servidores)
 // =========================================================================
-async function toggleDevice(deviceKey, commandPayload) {
+function triggerDevice(deviceKey) {
     const device = tuyaDevices[deviceKey];
     if (!device) {
-        console.error(`Dispositivo não encontrado no mapeamento: ${deviceKey}`);
+        console.error(`Dispositivo não encontrado: ${deviceKey}`);
         return;
     }
 
-    try {
-        console.log(`A enviar comando para [${device.name}] (ID: ${device.id})...`);
-        
-        // Exemplo de requisição para o endpoint de backend / nuvem
-        const response = await fetch(`/api/tuya/control`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                deviceId: device.id,
-                commands: commandPayload
-            })
-        });
-
-        const result = await response.json();
-        if (result.success) {
-            console.log(`Comando executado com sucesso em ${device.name}`);
-        } else {
-            console.warn(`Aviso da API Tuya para ${device.name}:`, result.message);
-        }
-    } catch (error) {
-        console.error(`Erro de comunicação com o dispositivo ${device.name}:`, error);
-    }
+    // Deep link direto para a aplicação Smart Life em background com o ID específico
+    const smartLifeDeepLink = `smartlife://device?id=${device.id}`;
+    
+    console.link(`A acionar [${device.name}] (ID: ${device.id}) via Smart Life...`);
+    
+    // Dispara o esquema de URI diretamente no browser do telemóvel
+    window.location.href = smartLifeDeepLink;
 }
 
-// Inicialização da Dashboard GitHub
+// Inicialização da Dashboard
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Dashboard 'Casa Pedro' inicializada com sucesso. 18 dispositivos carregados.");
+    console.log("Dashboard 'Pedro Nuno Engenho e Tecnologia' carregada com sucesso.");
 });
