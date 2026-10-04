@@ -3,176 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Nuno - Engenho e Tecnologia - Controle Local</title>
+    <title>Painel de Controlo - Casa Pedro</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
         body {
-            background-color: #0d1b2a;
-            color: #ffffff;
-            padding: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            padding: 15px;
         }
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 15px 10px;
-            border-bottom: 1px solid #1b263b;
-            margin-bottom: 15px;
-            gap: 10px;
+        h1 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #58a6ff;
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-            min-width: 200px;
-        }
-        .logo-container img {
-            width: 45px;
-            height: 45px;
-            object-fit: contain;
-            flex-shrink: 0;
-            border-radius: 6px;
-        }
-        .header-title {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .header-title h1 {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #ffffff;
-            line-height: 1.2;
-        }
-        .header-title span {
-            font-size: 0.75rem;
-            color: #94a3b8;
-        }
-        .voice-btn {
-            background-color: #1e3a8a;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-        .grid-container {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 10px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
         .card {
-            background-color: #1b263b;
-            border-radius: 10px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 90px;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 14px;
             cursor: pointer;
-            border: 1px solid #283850;
-            transition: background-color 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .card:active {
-            background-color: #27374d;
+            transform: scale(0.97);
         }
         .card-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: bold;
-            color: #e2e8f0;
-            word-break: break-word;
+            color: #ffffff;
+            margin: 0 0 4px 0;
+            text-transform: capitalize;
         }
         .card-room {
             font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 4px;
+            color: #8b949e;
+            margin: 0 0 10px 0;
         }
         .card-status {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            margin-top: 8px;
-            text-transform: uppercase;
         }
-        .status-off {
-            color: #ef4444;
+        .status-desligado {
+            color: #f85149;
         }
-        .status-on {
-            color: #22c55e;
+        .status-ligado {
+            color: #3fb950;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <!-- Substitua o src pelo link correto ou imagem do seu logótipo -->
-            <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
-            <div class="header-title">
-                <h1>Pedro Nuno - Engenho e Tecnologia</h1>
-                <span>Controle Local</span>
-            </div>
-        </div>
-        <button class="voice-btn" onclick="alert('Comando por voz ativo')">Comando por Voz</button>
-    </header>
-
-    <div class="grid-container" id="device-grid">
-        <!-- Dispositivos reais configurados -->
+    <h1>Painel de Controlo</h1>
+    
+    <div class="grid" id="device-grid">
+        <!-- Os cartões serão gerados dinamicamente ou listados abaixo -->
     </div>
 
     <script>
+        // Lista dos 15 dispositivos mapeados
         const devices = [
-            { name: "sala", room: "Sala de Estar", status: false },
-            { name: "candeeiro do pedro", room: "Sala de Estar", status: false },
-            { name: "fonte de alimentação", room: "Sala de Estar", status: false },
-            { name: "sensor da porta", room: "Sala de Estar", status: false },
-            { name: "candeeiro da xana", room: "Sala de Estar", status: false },
-            { name: "Quarto", room: "Sala de Estar", status: false },
-            { name: "Setup", room: "Sala de Estar", status: false },
-            { name: "IR inteligente", room: "Sala de Estar", status: false },
-            { name: "sala de estar", room: "Sala de Estar", status: false },
-            { name: "Campainha inteligente", room: "Entrada", status: false },
-            { name: "bancada", room: "Entrada", status: false },
-            { name: "cozinha", room: "Cozinha", status: false },
-            { name: "luz do quarto", room: "Quarto principal", status: false },
-            { name: "luz do laboratório", room: "Sala de Estar", status: false },
-            { name: "WC", room: "Sala de Estar", status: false }
+            { id: "sala", name: "Sala", room: "Sala de Estar", state: false },
+            { id: "candeeiro_pedro", name: "Candeeiro do Pedro", room: "Sala de Estar", state: false },
+            { id: "fonte_alimentacao", name: "Fonte de Alimentação", room: "Sala de Estar", state: false },
+            { id: "sensor_porta", name: "Sensor da Porta", room: "Sala de Estar", state: false },
+            { id: "candeeiro_xana", name: "Candeeiro da Xana", room: "Sala de Estar", state: false },
+            { id: "quarto", name: "Quarto", room: "Sala de Estar", state: false },
+            { id: "setup", name: "Setup", room: "Sala de Estar", state: false },
+            { id: "ir_inteligente", name: "IR Inteligente", room: "Sala de Estar", state: false },
+            { id: "sala_estar", name: "Sala de Estar", room: "Sala de Estar", state: false },
+            { id: "campainha_inteligente", name: "Campainha Inteligente", room: "Entrada", state: false },
+            { id: "bancada", name: "Bancada", room: "Entrada", state: false },
+            { id: "cozinha", name: "Cozinha", room: "Cozinha", state: false },
+            { id: "luz_quarto", name: "Luz do Quarto", room: "Quarto Principal", state: false },
+            { id: "luz_laboratorio", name: "Luz do Laboratório", room: "Sala de Estar", state: false },
+            { id: "wc", name: "WC", room: "Sala de Estar", state: false }
         ];
 
+        const grid = document.getElementById('device-grid');
+
         function renderGrid() {
-            const grid = document.getElementById('device-grid');
             grid.innerHTML = '';
             devices.forEach((dev, index) => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.onclick = () => toggleDevice(index);
-                
+
                 card.innerHTML = `
-                    <div>
-                        <div class="card-title">${dev.name}</div>
-                        <div class="card-room">${dev.room}</div>
-                    </div>
-                    <div class="card-status ${dev.status ? 'status-on' : 'status-off'}">
-                        ${dev.status ? 'LIGADO' : 'DESLIGADO'}
-                    </div>
+                    <p class="card-title">${dev.name}</p>
+                    <p class="card-room">${dev.room}</p>
+                    <p class="card-status ${dev.state ? 'status-ligado' : 'status-desligado'}">
+                        ${dev.state ? 'LIGADO' : 'DESLIGADO'}
+                    </p>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function toggleDevice(index) {
-            devices[index].status = !devices[index].status;
-            renderGrid();
+        async function toggleDevice(index) {
+            const dev = devices[index];
+            const newState = !dev.state;
+
+            try {
+                // Endpoint local de exemplo (ajuste para o IP do seu controlador ou API local)
+                const response = await fetch(`http://192.168.1.100/api/control?id=${dev.id}&state=${newState ? 'on' : 'off'}`, {
+                    method: 'GET', // ou 'POST' conforme a sua API
+                    mode: 'no-cors' // Ajuste se necessário para evitar problemas de CORS na rede local
+                });
+
+                // Atualiza o estado localmente após o clique bem-sucedido
+                dev.state = newState;
+                renderGrid();
+            } catch (error) {
+                console.error("Erro ao comunicar com o dispositivo:", error);
+                alert("Falha na comunicação com o dispositivo na rede local.");
+            }
         }
 
+        // Renderização inicial ao carregar a página
         renderGrid();
     </script>
 </body>
